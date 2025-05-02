@@ -17,4 +17,21 @@ SELECT 102, 'Jane Smith', 'Keyboard'
 UNION ALL
 SELECT 102, 'Jane Smith', 'Mouse'
 UNION ALL
-SELECT 103, 'Emily Clark', 'Phone';
+SELECT 103, 'Emily Clark', 'Phone'
+
+-- Question 2: Transforming OrderDetails into 2NF
+-- Step 1: Create a table for Orders (removing partial dependency)
+
+-- This table holds unique OrderID and its associated CustomerName
+SELECT DISTINCT
+    OrderID,
+    CustomerName
+FROM OrderDetails;
+
+-- Step 2: Create a table for OrderItems
+-- This table references OrderID and includes Product and Quantity
+SELECT
+    OrderID,
+    Product,
+    Quantity
+FROM OrderDetails;
